@@ -58,46 +58,46 @@
       }
 
       .login-btn a {
-  background: #1abc9c;
-  padding: 8px 18px;
-  border-radius: 20px;
-  color: white;
-}
+        background: #1abc9c;
+        padding: 8px 18px;
+        border-radius: 20px;
+        color: white;
+      }
 
-.login-btn a:hover {
-  background: #16a085;
-  color:  #2c3e50;
-}
+      .login-btn a:hover {
+        background: #16a085;
+        color: #2c3e50;
+      }
 
-.menu-toggle {
-  width: 26px;
-  height: 22px;
-  display: none;
-  position: relative;
-  cursor: pointer;
-  z-index: 1001;
-}
+      .menu-toggle {
+        width: 26px;
+        height: 22px;
+        display: none;
+        position: relative;
+        cursor: pointer;
+        z-index: 1001;
+      }
 
-.menu-toggle span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: white;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-.menu-toggle span:nth-child(1) {
-  top: 0;
-}
+      .menu-toggle span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .menu-toggle span:nth-child(1) {
+        top: 0;
+      }
 
-.menu-toggle span:nth-child(2) {
-  top: 9px;
-}
+      .menu-toggle span:nth-child(2) {
+        top: 9px;
+      }
 
-.menu-toggle span:nth-child(3) {
-  top: 18px;
-}
+      .menu-toggle span:nth-child(3) {
+        top: 18px;
+      }
 
       #homeimg {
         background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
@@ -178,7 +178,7 @@
         width: 250px;
         margin: 15px;
         text-align: center;
-        
+
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         transition:
           transform 0.3s ease,
@@ -286,12 +286,12 @@
         width: 100%;
       }
 
-     .contact-form input:focus,
-     .contact-form textarea:focus {
-         outline: none;
-  background: #ffffff;
-  border-color: #1abc9c;
-  box-shadow: 0 0 0 4px rgba(26, 188, 156, 0.15);
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        background: #ffffff;
+        border-color: #1abc9c;
+        box-shadow: 0 0 0 4px rgba(26, 188, 156, 0.15);
       }
 
       .contact-form input,
@@ -334,49 +334,49 @@
         }
 
         nav {
-    flex-direction: row;
-  }
+          flex-direction: row;
+        }
 
-  .menu-toggle {
-    display: flex;
-  }
+        .menu-toggle {
+          display: flex;
+        }
 
-  nav ul {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 260px;
-    height: 100vh;
-    background: #2c3e50;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    transition: right 0.3s ease;
-  }
+        nav ul {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 260px;
+          height: 100vh;
+          background: #2c3e50;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          transition: right 0.3s ease;
+        }
 
-  nav ul.active {
-    right: 0;
-  }
+        nav ul.active {
+          right: 0;
+        }
 
-  .login-btn a {
-    padding: 10px 24px;
-  }
-}
+        .login-btn a {
+          padding: 10px 24px;
+        }
+      }
 
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-  top:9px
-}
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+        top: 9px;
+      }
 
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
 
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-  top:9px;
-}
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+        top: 9px;
+      }
     </style>
   </head>
 
@@ -385,11 +385,11 @@
       <div class="logo">
         <img src="Logo/logoo.png" alt="CASART Logo" />
       </div>
-       <div class="menu-toggle" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <ul id="nav">
         <li><a href="#homeimg">Home</a></li>
         <li><a href="#aboutus">About</a></li>
@@ -471,21 +471,21 @@
       <p>CASART &copy; 2025. All rights reserved.</p>
     </footer>
     <script>
-  const menu = document.getElementById("nav");
-  const toggle = document.querySelector(".menu-toggle");
-  const links = document.querySelectorAll("#nav a");
+      const menu = document.getElementById("nav");
+      const toggle = document.querySelector(".menu-toggle");
+      const links = document.querySelectorAll("#nav a");
 
-  function toggleMenu() {
-    menu.classList.toggle("active");
-    toggle.classList.toggle("active");
-  }
+      function toggleMenu() {
+        menu.classList.toggle("active");
+        toggle.classList.toggle("active");
+      }
 
-  links.forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("active");
-      toggle.classList.remove("active");
-    });
-  });
-</script>
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("active");
+          toggle.classList.remove("active");
+        });
+      });
+    </script>
   </body>
 </html>
