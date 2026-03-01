@@ -235,12 +235,25 @@ body {
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
         const vid = document.getElementById("video");
         vid.addEventListener("click", () => {
             vid.muted = !vid.muted;
             vid.play();
         });
+
+        const supabaseUrl = "https://ohdbbeqffwwzbfruutim.supabase.co";
+  const supabaseKey = "sb_publishable_e_zywcmynGSVaRpdR3VG1A_55Hr3GKU";
+
+  const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+  );
+
+  console.log("Supabase connected");
+
     </script>
 </body>
 </html>
