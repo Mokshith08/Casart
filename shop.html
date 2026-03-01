@@ -700,7 +700,7 @@
           </svg>
         </span>
         <p>Welcome, User</p>
-        <button>Logout</button>
+        <button id="logoutBtn">Logout</button>
       </div>
     </nav>
 
@@ -1010,6 +1010,8 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 const cards = document.querySelectorAll(".hero-card");
 let current = 0;
@@ -1057,6 +1059,36 @@ updateSlider();
           btn.classList.toggle("active");
         });
       });
+
+
+      const supabaseUrl = "https://ohdbbeqffwwzbfruutim.supabase.co";
+      const supabaseKey = "sb_publishable_e_zywcmynGSVaRpdR3VG1A_55Hr3GKU";
+
+  const supabaseClient = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+  );
+  
+async function checkUser() {
+  const { data } = await supabaseClient.auth.getUser();
+
+  if (!data.user) {
+    window.location.href = "login.html";
+  } else {
+
+    const fullName = data.user.user_metadata.full_name;
+    const firstName = fullName ? fullName.split(" ")[0] : "User";
+
+    document.querySelector("nav .right p").textContent =
+      "Welcome, " + firstName;
+  }
+}
+
+checkUser();
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await supabaseClient.auth.signOut();
+  window.location.href = "login.html";
+});
     </script>
   </body>
 </html>

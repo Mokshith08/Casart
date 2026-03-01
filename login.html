@@ -222,14 +222,14 @@ body {
 
             <h2>Login to Casart</h2>
 
-            <form action="prologin.php" method="POST">
+            <form id="loginForm">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
 
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
 
-            <button type="submit" onclick="window.location.href='shop.html'">Login</button>
+            <button type="submit">Login</button>
                 <p>Don't have an account? <a href="register.html">Register here</a></p>
             </form>
         </div>
@@ -245,14 +245,34 @@ body {
         });
 
         const supabaseUrl = "https://ohdbbeqffwwzbfruutim.supabase.co";
-  const supabaseKey = "sb_publishable_e_zywcmynGSVaRpdR3VG1A_55Hr3GKU";
+        const supabaseKey = "sb_publishable_e_zywcmynGSVaRpdR3VG1A_55Hr3GKU";
 
-  const supabase = window.supabase.createClient(
+  const supabaseClient = window.supabase.createClient(
     supabaseUrl,
     supabaseKey
   );
-
   console.log("Supabase connected");
+
+  const loginForm = document.getElementById("loginForm");
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      alert("Login failed: " + error.message);
+    } else {
+      alert("Login successful!");
+      window.location.href = "shop.html";
+    }
+  });
 
     </script>
 </body>
