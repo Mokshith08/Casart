@@ -81,6 +81,181 @@
         color: white;
       }
 
+.hero-wrapper {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(-45deg, #1abc9c, #16a085, #2c3e50, #1abc9c);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+  z-index: 0;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-slider {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  height: 300px;
+  perspective: 1200px;
+  z-index: 2;
+}
+
+.hero-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+  transition: all 0.6s ease;
+  opacity: 0;
+  transform: translateX(100%) scale(0.8) rotateY(20deg);
+}
+
+.hero-card.active {
+  opacity: 1;
+  transform: translateX(0) scale(1) rotateY(0);
+  z-index: 3;
+}
+
+.hero-card.prev {
+  opacity: 0.6;
+  transform: translateX(-30%) scale(0.9) rotateY(-15deg);
+  z-index: 2;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.55);
+  color: white;
+  height: 100%;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.overlay h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.overlay button {
+  padding: 12px 25px;
+  border: none;
+  background: #1abc9c;
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #16a085;
+}
+
+@media (max-width: 600px) {
+  .hero-wrapper {
+    height: 320px;
+  }
+
+  .hero-slider {
+    height: 250px;
+  }
+
+  .overlay h2 {
+    font-size: 20px;
+  }
+
+  .overlay p {
+    font-size: 13px;
+  }
+}
+
+.section-title {
+  text-align: center;
+  font-size: 28px;
+  margin: 50px 0 30px;
+  color: #2c3e50;
+}
+
+.premium-categories {
+  padding: 25px 20px;
+  background: #f8f9fb;
+}
+
+.premium-scroll {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.premium-item {
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.premium-icon {
+  width: 75px;
+  height: 75px;
+  border-radius: 22px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: 0.4s ease;
+}
+
+.premium-icon img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.premium-item span {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2c3e50;
+  transition: 0.3s ease;
+}
+
+.premium-item:hover .premium-icon {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+}
+
+.premium-item:hover span {
+  color: #1abc9c;
+}
+
       .shop-header {
         text-align: center;
         padding: 40px 20px 20px;
@@ -107,15 +282,13 @@
       }
 
       .product-card {
-        position: relative;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-      }
+  position: relative;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: 0.3s;
+}
 
       .product-card:hover {
         transform: translateY(-6px);
@@ -302,6 +475,109 @@
   }
 }
 
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+  nav {
+    padding: 12px 20px;
+  }
+
+  nav .right {
+    gap: 16px;
+    font-size: 13px;
+  }
+
+  nav .logo img {
+    height: 34px;
+    width: 34px;
+  }
+
+  .hero-wrapper {
+    height: 360px;
+  }
+
+  .hero-slider {
+    height: 280px;
+    max-width: 750px;
+  }
+
+  .overlay h2 {
+    font-size: 24px;
+  }
+
+  .overlay p {
+    font-size: 14px;
+  }
+
+  .premium-scroll {
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .premium-item {
+    min-width: 90px;
+  }
+
+  .premium-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .premium-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shop-header h1 {
+    font-size: 26px;
+  }
+
+  .shop-header p {
+    font-size: 14px;
+  }
+
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .product-card img {
+    height: 170px;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .premium-scroll {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    justify-items: center;
+  }
+
+  .premium-item {
+    min-width: auto;
+  }
+
+  .premium-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+  }
+
+  .premium-icon img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .premium-item span {
+    font-size: 13px;
+  }
+}
+
+
 @media (max-width: 600px) {
   nav {
     flex-direction: column;
@@ -351,6 +627,38 @@
   .footer-col ul li {
     margin-bottom: 10px;
   }
+  .hero-card {
+    padding: 25px;
+  }
+
+  .hero-card h2 {
+    font-size: 20px;
+  }
+
+  .hero-card p {
+    font-size: 13px;
+  }
+
+  .hero-card-slider {
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .premium-scroll {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 10px;
+  }
+
+  .premium-item {
+    min-width: 80px;
+  }
+
+  .premium-scroll::-webkit-scrollbar {
+    display: none;
+  }
 }
 
     </style>
@@ -382,7 +690,109 @@
         <button>Logout</button>
       </div>
     </nav>
-    <div class="shop-header">
+
+<section class="hero-wrapper">
+  <div class="hero-bg"></div>
+
+  <div class="hero-slider" id="heroSlider">
+    
+    <div class="hero-card active" 
+         style="background-image: url('Products/Shoes.jpg');">
+      <div class="overlay">
+        <h2>🔥 Big Sale 50% OFF</h2>
+        <p>Upgrade your lifestyle with premium products.</p>
+        <button>Shop Now</button>
+      </div>
+    </div>
+
+    <div class="hero-card"
+         style="background-image: url('Products/smart watch.jpg');">
+      <div class="overlay">
+        <h2>⌚ New Arrivals</h2>
+        <p>Latest watches, gadgets & fashion.</p>
+        <button>Explore</button>
+      </div>
+    </div>
+
+    <div class="hero-card"
+         style="background-image: url('Products/jacket.jpg');">
+      <div class="overlay">
+        <h2>🛍 Premium Collection</h2>
+        <p>Style meets comfort at Casart.</p>
+        <button>Discover</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="premium-categories">
+  <div class="shop-header">
+      <h1>Categories</h1>
+      <p>Explore our wide range of product categories</p>
+    </div>
+  <div class="premium-scroll">
+
+    <div class="premium-item">
+      <div class="premium-icon">
+        <img src="Products/fashion.jpeg" alt="">
+      </div>
+      <span>Fashion</span>
+    </div>
+
+    <div class="premium-item">
+      <div class="premium-icon">
+        <img src="Products/Electronic.jpg" alt="">
+      </div>
+      <span>Electronics</span>
+    </div>
+
+    <div class="premium-item">
+      <div class="premium-icon">
+        <img src="Products/furniture.jpg" alt="">
+      </div>
+      <span>Furniture</span>
+    </div>
+
+    <div class="premium-item">
+      <div class="premium-icon">
+        <img src="Products/beauty.jpg" alt="">
+      </div>
+      <span>Beauty</span>
+    </div>
+
+    <div class="premium-item">
+      <div class="premium-icon">
+        <img src="Products/phone.jpg" alt="">
+      </div>
+      <span>Mobiles</span>
+    </div>
+
+    <div class="premium-item">
+      <div class="premium-icon">
+        <img src="Products/helmet.webp" alt="">
+      </div>
+      <span>Auto</span>
+    </div>
+
+    <div class="premium-item">
+      <div class="premium-icon">
+        <img src="Products/cric.jpeg" alt="">
+      </div>
+      <span>Sports</span>
+    </div>
+
+    <div class="premium-item">
+      <div class="premium-icon">
+        <img src="Products/atta.webp" alt="">
+      </div>
+      <span>Food</span>
+    </div>
+
+  </div>
+</section>
+
+   <div class="shop-header">
       <h1>Shop at Casart</h1>
       <p>Explore our best products picked just for you</p>
     </div>
@@ -398,9 +808,9 @@
         </div>
         <img src="Products/Shoes.jpg" />
         <div class="product-info">
-          <h3>Casual Shoes</h3>
+          <h3>Nike Shoes</h3>
           <p>Comfortable everyday wear</p>
-          <div class="price">₹1,999</div>
+          <div class="price">₹6,999</div>
           <button>Add to Cart</button>
         </div>
       </div>
@@ -489,6 +899,40 @@
           <button>Add to Cart</button>
         </div>
       </div>
+
+      <div class="product-card">
+        <div class="like-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path
+              d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"
+            />
+          </svg>
+        </div>
+        <img src="Products/dining.webp" />
+        <div class="product-info">
+          <h3>Dining Set</h3>
+          <p>Complete dining experience</p>
+          <div class="price">₹24,999</div>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="like-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path
+              d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"
+            />
+          </svg>
+        </div>
+        <img src="Products/watches.jpg" />
+        <div class="product-info">
+          <h3>Men’s Watches</h3>
+          <p>Elegant designs for every occasion</p>
+          <div class="price">₹12,999</div>
+          <button>Add to Cart</button>
+        </div>
+      </div>
     </section>
 
 <footer class="site-footer">
@@ -536,7 +980,48 @@
   </div>
 </footer>
 
-    <script>
+<script>
+const cards = document.querySelectorAll(".hero-card");
+let current = 0;
+
+function updateSlider() {
+  cards.forEach(card => {
+    card.classList.remove("active", "prev");
+  });
+
+  cards[current].classList.add("active");
+
+  let prevIndex = (current - 1 + cards.length) % cards.length;
+  cards[prevIndex].classList.add("prev");
+}
+
+function nextSlide() {
+  current = (current + 1) % cards.length;
+  updateSlider();
+}
+setInterval(nextSlide, 4000);
+
+
+let startX = 0;
+document.getElementById("heroSlider")
+  .addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+document.getElementById("heroSlider")
+  .addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+
+    if (startX - endX > 50) {
+      nextSlide();
+    } else if (endX - startX > 50) {
+      current = (current - 1 + cards.length) % cards.length;
+      updateSlider();
+    }
+  });
+
+updateSlider();
+
       document.querySelectorAll(".like-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           btn.classList.toggle("active");
