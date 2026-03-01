@@ -147,6 +147,12 @@ body {
 .f-side a:hover {
   text-decoration: underline;
 }
+.errorMessage {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-bottom: 12px;
+  display: none;
+}
 
 @media (max-width: 900px) {
   body {
@@ -229,6 +235,7 @@ body {
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
 
+                <div id="errorMessage"></div>
             <button type="submit">Login</button>
                 <p>Don't have an account? <a href="register.html">Register here</a></p>
             </form>
@@ -255,24 +262,35 @@ body {
 
   const loginForm = document.getElementById("loginForm");
 
-  loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const errorBox = document.getElementById("errorMessage");
 
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: password,
-    });
+  errorBox.style.display = "none";
+  errorBox.textContent = "";
 
-    if (error) {
-      alert("Login failed: " + error.message);
-    } else {
-      alert("Login successful!");
-      window.location.href = "shop.html";
-    }
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password,
   });
+
+  if (error) {
+    errorBox.style.display = "block";
+
+    if (error.message.includes("Invalid login credentials")) {
+      errorBox.textContent = "Account not found or incorrect password.";
+    } else {
+      errorBox.textContent = error.message;
+    }
+
+    return;
+  }
+
+  window.location.href = "shop.html";
+});
 
     </script>
 </body>
