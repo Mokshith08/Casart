@@ -139,7 +139,19 @@
   transform: translateX(-30%) scale(0.9) rotateY(-15deg);
   z-index: 2;
 }
-
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #e74c3c;
+  color: white;
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 50px;
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+}
 .overlay {
   background: rgba(0,0,0,0.55);
   color: white;
@@ -452,6 +464,24 @@
   color: #aaa;
 }
 
+.toast {
+  position: fixed;
+  right: -300px;
+  bottom: 30px;
+  background: #2c3e50;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transition: right 0.4s ease;
+  font-size: 14px;
+  z-index: 9999;
+}
+
+.toast.show {
+  right: 30px;
+}
+
 @media (max-width: 900px) {
   nav {
     padding: 10px 18px;
@@ -579,7 +609,6 @@
 
 
 @media (max-width: 600px) {
-  @media (max-width: 600px) {
 
   nav {
     flex-direction: row;
@@ -606,7 +635,6 @@
     font-size: 12px;
   }
 
-}
   .shop-header {
     padding: 30px 15px 15px;
   }
@@ -692,13 +720,12 @@
           </svg>
         </span>
 
-        <span class="nav-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-            <path
-              d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48z"
-            />
-          </svg>
-        </span>
+        <span class="nav-icon" onclick="window.location.href='cart.html'" style="position:relative;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+    <path d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48z"/>
+  </svg>
+  <span id="cartCount" class="cart-badge">0</span>
+</span>
         <p>Welcome, User</p>
         <button id="logoutBtn">Logout</button>
       </div>
@@ -824,7 +851,7 @@
           <h3>Nike Shoes</h3>
           <p>Comfortable everyday wear</p>
           <div class="price">₹6,999</div>
-          <button>Add to Cart</button>
+          <button onclick="addToCart('Nike Shoes', 6999)">Add to Cart</button>
         </div>
       </div>
 
@@ -841,7 +868,7 @@
           <h3>Smart Watch</h3>
           <p>Track your daily activity</p>
           <div class="price">₹3,499</div>
-          <button>Add to Cart</button>
+          <button onclick="addToCart('Smart Watch', 3499)">Add to Cart</button>
         </div>
       </div>
 
@@ -858,7 +885,7 @@
           <h3>Wireless Headphones</h3>
           <p>High quality sound</p>
           <div class="price">₹2,299</div>
-          <button>Add to Cart</button>
+          <button onclick="addToCart('Wireless Headphones', 2299)">Add to Cart</button>
         </div>
       </div>
 
@@ -875,7 +902,7 @@
           <h3>Backpack</h3>
           <p>Perfect for travel & work</p>
           <div class="price">₹1,499</div>
-          <button>Add to Cart</button>
+          <button onclick="addToCart('Backpack', 1499)">Add to Cart</button>
         </div>
       </div>
 
@@ -892,7 +919,7 @@
           <h3>Bluetooth Speaker</h3>
           <p>Loud & clear audio</p>
           <div class="price">₹1,899</div>
-          <button>Add to Cart</button>
+          <button onclick="addToCart('Bluetooth Speaker', 1899)">Add to Cart</button>
         </div>
       </div>
 
@@ -909,7 +936,7 @@
           <h3>Men’s Jacket</h3>
           <p>Stylish & comfortable</p>
           <div class="price">₹2,799</div>
-          <button>Add to Cart</button>
+          <button onclick="addToCart('Men’s Jacket', 2799)">Add to Cart</button>
         </div>
       </div>
 
@@ -926,7 +953,7 @@
           <h3>Dining Set</h3>
           <p>Complete dining experience</p>
           <div class="price">₹24,999</div>
-          <button>Add to Cart</button>
+          <button onclick="addToCart('Dining Set', 24999)">Add to Cart</button>
         </div>
       </div>
 
@@ -943,7 +970,7 @@
           <h3>Fossil Watch</h3>
           <p>Elegant designs for every occasion</p>
           <div class="price">₹12,999</div>
-          <button>Add to Cart</button>
+          <button onclick="addToCart('Fossil Watch', 12999)">Add to Cart</button>
         </div>
       </div>
 
@@ -960,7 +987,7 @@
           <h3>LG OLED TV</h3>
           <p>4K Ultra HD Smart TV</p>
           <div class="price">₹1,24,999</div>
-          <button>Add to Cart</button>
+          <button onclick="addToCart('LG OLED TV',124999)">Add to Cart</button>
         </div>
       </div>
     </section>
@@ -1009,6 +1036,10 @@
     © 2025 Casart. All rights reserved.
   </div>
 </footer>
+
+<div id="toast" class="toast">
+  Item added to cart 🛒
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1068,20 +1099,114 @@ updateSlider();
     supabaseUrl,
     supabaseKey
   );
+supabaseClient
+  .channel("cart-changes")
+  .on(
+    "postgres_changes",
+    {
+      event: "*",
+      schema: "public",
+      table: "cart"
+    },
+    (payload) => {
+      updateCartCount();
+    }
+  )
+  .subscribe();
+  
+  function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
+  async function updateCartCount() {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) return;
+
+  const { data } = await supabaseClient
+    .from("cart")
+    .select("quantity")
+    .eq("user_id", user.id);
+
+  let total = 0;
+
+  if (data) {
+    data.forEach(item => {
+      total += item.quantity;
+    });
+  }
+
+  document.getElementById("cartCount").textContent = total;
+}
+
+  async function addToCart(productName, price) {
+
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  const { data: existingItem } = await supabaseClient
+    .from("cart")
+    .select("*")
+    .eq("user_id", user.id)
+    .eq("product_name", productName)
+    .single();
+
+  if (existingItem) {
+    await supabaseClient
+      .from("cart")
+      .update({
+        quantity: existingItem.quantity + 1
+      })
+      .eq("id", existingItem.id);
+  } else {
+    await supabaseClient
+      .from("cart")
+      .insert([
+        {
+          user_id: user.id,
+          product_name: productName,
+          price: price,
+          quantity: 1
+        }
+      ]);
+  }
+
+  // 🔥 Auto refresh cart badge instantly
+  updateCartCount();
+
+  // 🎉 Show side popup
+  showToast(productName + " added to cart");
+}
   
 async function checkUser() {
-  const { data } = await supabaseClient.auth.getUser();
+  const { data, error } = await supabaseClient.auth.getUser();
 
-  if (!data.user) {
+  if (error || !data.user) {
     window.location.href = "login.html";
-  } else {
-
-    const fullName = data.user.user_metadata.full_name;
-    const firstName = fullName ? fullName.split(" ")[0] : "User";
-
-    document.querySelector("nav .right p").textContent =
-      "Welcome, " + firstName;
+    return;
   }
+
+  const user = data.user;
+
+  // Safe name handling
+  const fullName = user.user_metadata?.full_name;
+  const firstName = fullName ? fullName.split(" ")[0] : "User";
+
+  document.querySelector("nav .right p").textContent =
+    "Welcome, " + firstName;
+
+  // 🔥 IMPORTANT: Update cart badge after user loads
+  updateCartCount();
 }
 
 checkUser();
@@ -1089,6 +1214,8 @@ document.getElementById("logoutBtn").addEventListener("click", async () => {
   await supabaseClient.auth.signOut();
   window.location.href = "login.html";
 });
+
+updateCartCount(); // Update cart count on page load
     </script>
   </body>
 </html>
