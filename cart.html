@@ -14,6 +14,66 @@
         background: #f1f3f6;
       }
 
+      .cart-card{
+display:flex;
+gap:15px;
+background:white;
+padding:15px;
+border-radius:12px;
+margin-bottom:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+align-items:center;
+}
+
+.cart-img{
+width:80px;
+height:80px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.cart-details{
+flex:1;
+}
+
+.cart-details h3{
+margin:0;
+font-size:16px;
+}
+
+.price{
+color:#555;
+margin:4px 0;
+}
+
+.qty-control{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:6px;
+}
+
+.qty-control button{
+width:28px;
+height:28px;
+border:none;
+background:#f1f1f1;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
+}
+
+.qty-control span{
+font-weight:600;
+}
+
+.remove{
+color:#e74c3c;
+font-size:13px;
+cursor:pointer;
+margin-top:6px;
+}
+
       .cart-header {
         background: white;
         display: flex;
@@ -96,26 +156,47 @@
         cursor: pointer;
       }
 
-      /* TOTAL */
-      .cart-total {
-        background: white;
-        padding: 15px;
-        font-weight: bold;
-        display: flex;
-        justify-content: space-between;
-        position: sticky;
-        bottom: 0;
-        border-top: 1px solid #eee;
-      }
+      .cart-total{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+padding:15px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 -4px 15px rgba(0,0,0,0.08);
+z-index:100;
+}
 
-      .checkout-btn {
-        background: #fb641b;
-        border: none;
-        color: white;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 4px;
-      }
+.checkout-btn{
+background:#ff6a00;
+border:none;
+color:white;
+padding:12px 26px;
+border-radius:8px;
+font-weight:600;
+font-size:15px;
+}
+
+.checkout-btn:hover{
+background:#e65c00; 
+cursor:pointer;
+}
+
+@media(max-width:600px){
+.cart-img{
+width:70px;
+height:70px;
+}
+
+.checkout-btn{
+padding:12px 20px;
+font-size:14px;
+}
+}
+
     </style>
   </head>
 
@@ -199,6 +280,29 @@
   });
 
   totalPriceDiv.textContent = total;
+}
+
+async function changeQty(id, change) {
+
+const { data } = await supabaseClient
+.from("cart")
+.select("*")
+.eq("id", id)
+.single();
+
+let newQty = data.quantity + change;
+
+if(newQty < 1){
+removeItem(id);
+return;
+}
+
+await supabaseClient
+.from("cart")
+.update({ quantity: newQty })
+.eq("id", id);
+
+loadCart();
 }
 
   async function removeItem(id) {

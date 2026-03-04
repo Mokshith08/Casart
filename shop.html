@@ -851,7 +851,7 @@
           <h3>Nike Shoes</h3>
           <p>Comfortable everyday wear</p>
           <div class="price">₹6,999</div>
-          <button onclick="addToCart('Nike Shoes', 6999)">Add to Cart</button>
+          <button onclick="addToCart('Nike Shoes', 6999,'Products/Shoes.jpg')">Add to Cart</button>
         </div>
       </div>
 
@@ -868,7 +868,7 @@
           <h3>Smart Watch</h3>
           <p>Track your daily activity</p>
           <div class="price">₹3,499</div>
-          <button onclick="addToCart('Smart Watch', 3499)">Add to Cart</button>
+          <button onclick="addToCart('Smart Watch', 3499, 'Products/smart watch.jpg')">Add to Cart</button>
         </div>
       </div>
 
@@ -885,7 +885,7 @@
           <h3>Wireless Headphones</h3>
           <p>High quality sound</p>
           <div class="price">₹2,299</div>
-          <button onclick="addToCart('Wireless Headphones', 2299)">Add to Cart</button>
+          <button onclick="addToCart('Wireless Headphones', 2299, 'Products/Headphone.jpg')">Add to Cart</button>
         </div>
       </div>
 
@@ -902,7 +902,7 @@
           <h3>Backpack</h3>
           <p>Perfect for travel & work</p>
           <div class="price">₹1,499</div>
-          <button onclick="addToCart('Backpack', 1499)">Add to Cart</button>
+          <button onclick="addToCart('Backpack', 1499, 'Products/Bag.jpg')">Add to Cart</button>
         </div>
       </div>
 
@@ -919,7 +919,7 @@
           <h3>Bluetooth Speaker</h3>
           <p>Loud & clear audio</p>
           <div class="price">₹1,899</div>
-          <button onclick="addToCart('Bluetooth Speaker', 1899)">Add to Cart</button>
+          <button onclick="addToCart('Bluetooth Speaker', 1899, 'Products/blue.jpeg')">Add to Cart</button>
         </div>
       </div>
 
@@ -936,7 +936,7 @@
           <h3>Men’s Jacket</h3>
           <p>Stylish & comfortable</p>
           <div class="price">₹2,799</div>
-          <button onclick="addToCart('Men’s Jacket', 2799)">Add to Cart</button>
+          <button onclick="addToCart('Men’s Jacket', 2799, 'Products/jacket.jpg')">Add to Cart</button>
         </div>
       </div>
 
@@ -953,7 +953,7 @@
           <h3>Dining Set</h3>
           <p>Complete dining experience</p>
           <div class="price">₹24,999</div>
-          <button onclick="addToCart('Dining Set', 24999)">Add to Cart</button>
+          <button onclick="addToCart('Dining Set', 24999, 'Products/dining.webp')">Add to Cart</button>
         </div>
       </div>
 
@@ -970,7 +970,7 @@
           <h3>Fossil Watch</h3>
           <p>Elegant designs for every occasion</p>
           <div class="price">₹12,999</div>
-          <button onclick="addToCart('Fossil Watch', 12999)">Add to Cart</button>
+          <button onclick="addToCart('Fossil Watch', 12999, 'Products/watches.jpg')">Add to Cart</button>
         </div>
       </div>
 
@@ -987,7 +987,7 @@
           <h3>LG OLED TV</h3>
           <p>4K Ultra HD Smart TV</p>
           <div class="price">₹1,24,999</div>
-          <button onclick="addToCart('LG OLED TV',124999)">Add to Cart</button>
+          <button onclick="addToCart('LG OLED TV',124999, 'Products/Tv.png')">Add to Cart</button>
         </div>
       </div>
     </section>
@@ -1008,10 +1008,10 @@
     <div class="footer-col">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#index.html">Home</a></li>
-        <li><a href="#">Shop</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
         <li><a href="#">Wishlist</a></li>
-        <li><a href="#">Cart</a></li>
+        <li><a href="cart.html">Cart</a></li>
       </ul>
     </div>
 
@@ -1145,7 +1145,7 @@ supabaseClient
   document.getElementById("cartCount").textContent = total;
 }
 
-  async function addToCart(productName, price) {
+  async function addToCart(productName, price, image) {
 
   const { data: { user } } = await supabaseClient.auth.getUser();
 
@@ -1176,6 +1176,7 @@ supabaseClient
           user_id: user.id,
           product_name: productName,
           price: price,
+          image: image,
           quantity: 1
         }
       ]);
@@ -1187,7 +1188,7 @@ supabaseClient
   // 🎉 Show side popup
   showToast(productName + " added to cart");
 }
-  
+
 async function checkUser() {
   const { data, error } = await supabaseClient.auth.getUser();
 

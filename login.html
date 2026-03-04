@@ -154,6 +154,29 @@ body {
   display: none;
 }
 
+.toast {
+  position: fixed;
+  right: -350px;
+  top: 30px;
+  background: #e74c3c;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: right 0.4s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  right: 30px;
+}
+
+.toast.success {
+  background: #1abc9c;
+}
+
 @media (max-width: 900px) {
   body {
     height: auto;
@@ -242,6 +265,7 @@ body {
         </div>
     </div>
 
+    <div id="toast" class="toast"></div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
@@ -259,6 +283,23 @@ body {
     supabaseKey
   );
   console.log("Supabase connected");
+
+  function showToast(message, type = "error") {
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.classList.remove("success");
+
+  if (type === "success") {
+    toast.classList.add("success");
+  }
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
 
   const loginForm = document.getElementById("loginForm");
 
@@ -278,18 +319,21 @@ loginForm.addEventListener("submit", async (e) => {
   });
 
   if (error) {
-    errorBox.style.display = "block";
 
-    if (error.message.includes("Invalid login credentials")) {
-      errorBox.textContent = "Account not found or incorrect password.";
-    } else {
-      errorBox.textContent = error.message;
-    }
-
-    return;
+  if (error.message.includes("Invalid login credentials")) {
+    showToast("Account not found or incorrect password.");
+  } else {
+    showToast(error.message);
   }
 
+  return;
+}
+
+ showToast("Login successful 🎉", "success");
+
+setTimeout(() => {
   window.location.href = "shop.html";
+}, 1200);
 });
 
     </script>
