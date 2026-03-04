@@ -1159,7 +1159,7 @@ supabaseClient
     .select("*")
     .eq("user_id", user.id)
     .eq("product_name", productName)
-    .single();
+    .maybeSingle();
 
   if (existingItem) {
     await supabaseClient
