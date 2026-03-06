@@ -8,7 +8,7 @@
 
 ## 📖 Project Description
 
-Casart is a responsive e-commerce web application developed as a mini project.  
+**Casart** is a responsive e-commerce web application developed as a mini project.  
 The main goal of this project is to design and implement a clean, modern, and user-friendly shopping interface.
 
 Users can browse products, like items, add to a cart section , and navigate smoothly across different sections of the website.  
@@ -29,21 +29,52 @@ The project emphasizes frontend development, responsive design, and UI consisten
 
 ## ✨ Features
 
-- 🔐 Login and Registration pages
-- 🏬 Shop page with product cards
-- ❤️ Wishlist (Like)
-- 🛒 Cart feature 
-- 🧭 Sticky navigation bar
-- 📱 Fully responsive design
-- 🦶 Structured footer section
+### 🔐 Authentication
+- User Registration  
+- User Login  
+- Secure authentication using **Supabase**
 
+### 🏬 Shopping Interface
+- Product card layout  
+- Clean product display  
+- Product images and descriptions  
+
+### ❤️ Wishlist
+- Like products  
+- Toggle wishlist icon  
+
+### 🛒 Cart System
+- Add products to cart  
+- Quantity control (+ / −)  
+- Remove products  
+- User-specific cart  
+- Sticky checkout section  
+
+### 🧭 Navigation
+- Sticky navigation bar  
+- Cart badge indicator  
+- Logout option  
+
+### 📱 Responsive Design
+Fully responsive layout optimized for:
+- Desktop  
+- Tablet  
+- Mobile devices  
+
+### 🎨 UI Features
+- Hero slider section  
+- Animated UI interactions  
+- Toast popup notifications  
+- Smooth transitions  
 ---
 
 ## 🛠️ Technologies Used
 
-### Frontend
-- HTML5
-- CSS3
+| Category | Technology |
+|--------|---------------------|
+| Frontend | HTML5 | CSS | JavaScript |
+| Backend / Database | Supabase |
+| Deployment | Vercel |
 ---
 
 ## 📂 Project Structure
@@ -51,26 +82,41 @@ The project emphasizes frontend development, responsive design, and UI consisten
 ├── 📁 Logo
 │   ├── 🎬 Logvideo.mp4
 │   ├── 🖼️ Shoe.jpg
+│   ├── 🖼️ back button.svg
 │   ├── 🖼️ bann.jpg
 │   ├── 🖼️ eco1.jpg
 │   ├── 🖼️ home1.jpeg
 │   ├── 🖼️ icon.png
 │   ├── 🖼️ logo.png
 │   ├── 🖼️ logoo.png
+│   ├── 🖼️ pronot.jpg
 │   └── 🖼️ shopping-bag-cart.jpg
 ├── 📁 Products
 │   ├── 🖼️ Bag.jpg
+│   ├── 🖼️ Electronic.jpg
 │   ├── 🖼️ Headphone.jpg
 │   ├── 🖼️ Shoes.jpg
+│   ├── 🖼️ Tv.png
+│   ├── 🖼️ atta.webp
+│   ├── 🖼️ beauty.jpg
 │   ├── 🖼️ blue.jpeg
+│   ├── 🖼️ cric.jpeg
+│   ├── 🖼️ dining.webp
+│   ├── 🖼️ fashion.jpeg
+│   ├── 🖼️ furniture.jpg
+│   ├── 🖼️ helmet.webp
 │   ├── 🖼️ jacket.jpg
-│   └── 🖼️ smart watch.jpg
+│   ├── 🖼️ phone.jpg
+│   ├── 🖼️ smart watch.jpg
+│   └── 🖼️ watches.jpg
 ├── 📝 README.md
+├── 🌐 cart.html
 ├── 🌐 index.html
 ├── 🌐 login.html
 ├── 🌐 register.html
 └── 🌐 shop.html
 ```
+
 ---
 
 ## ⚙️ How to Run the Project
@@ -86,6 +132,10 @@ The project emphasizes frontend development, responsive design, and UI consisten
 
 ---
 
+🌐 Live Demo
+   👉 https://casart.vercel.app/
+
+---
 📱 Responsiveness
 
 The project is fully responsive and works smoothly on:
@@ -96,12 +146,11 @@ The project is fully responsive and works smoothly on:
 ---
 
 🔮 Future Enhancements
-- Complete working backend.
-- Dedicated cart page.
 - Product quantity control.
 - Product search and filter.
 - User profile dashboard.
 - Payment integration.
+- Product search and filtering
 
 ---
 
