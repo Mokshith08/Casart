@@ -71,10 +71,11 @@ Fully responsive layout optimized for:
 ## 🛠️ Technologies Used
 
 | Category | Technology |
-|--------|---------------------|
-| Frontend | HTML5 | CSS | JavaScript |
+|----------|------------|
+| Frontend | HTML5, CSS, JavaScript |
 | Backend / Database | Supabase |
 | Deployment | Vercel |
+
 ---
 
 ## 📂 Project Structure
